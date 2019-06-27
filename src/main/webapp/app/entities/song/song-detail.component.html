@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="song">
+            <h2><span jhiTranslate="hipsterBandApp.song.detail.title">Song</span> {{song.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hipsterBandApp.song.title">Title</span></dt>
+                <dd>
+                    <span>{{song.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="hipsterBandApp.song.duration">Duration</span></dt>
+                <dd>
+                    <span>{{song.duration}}</span>
+                </dd>
+                <dt><span jhiTranslate="hipsterBandApp.song.audioContent">Audio Content</span></dt>
+                <dd>
+                    <div *ngIf="song.audioContent">
+                        <a (click)="openFile(song.audioContentContentType, song.audioContent)" jhiTranslate="entity.action.open">open</a>
+                        {{song.audioContentContentType}}, {{byteSize(song.audioContent)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="hipsterBandApp.song.creationDate">Creation Date</span></dt>
+                <dd>
+                    <span>{{song.creationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="hipsterBandApp.song.lyrics">Lyrics</span></dt>
+                <dd>
+                    <span>{{song.lyrics}}</span>
+                </dd>
+                <dt><span jhiTranslate="hipsterBandApp.song.author">Author</span></dt>
+                <dd>
+                    {{song.author?.login}}
+                </dd>
+                <dt><span jhiTranslate="hipsterBandApp.song.band">Band</span></dt>
+                <dd>
+                    <div *ngIf="song.band">
+                        <a [routerLink]="['/band', song.band?.id, 'view']">{{song.band?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/song', song.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

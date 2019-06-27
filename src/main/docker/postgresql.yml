@@ -1,0 +1,11 @@
+version: '2'
+services:
+  hipsterband-postgresql:
+    image: postgres:11.3
+    # volumes:
+    #     - ~/volumes/jhipster/HipsterBand/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=HipsterBand
+      - POSTGRES_PASSWORD=
+    ports:
+      - 5432:5432

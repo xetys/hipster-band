@@ -1,0 +1,78 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="hipsterBandApp.song.home.title">Songs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-song" [routerLink]="['/song/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="hipsterBandApp.song.home.createLabel">
+            Create new Song
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="songs?.length === 0">
+        <span jhiTranslate="hipsterBandApp.song.home.notFound">No songs found</span>
+    </div>
+    <div class="table-responsive" *ngIf="songs?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hipsterBandApp.song.title">Title</span></th>
+            <th><span jhiTranslate="hipsterBandApp.song.duration">Duration</span></th>
+            <th><span jhiTranslate="hipsterBandApp.song.audioContent">Audio Content</span></th>
+            <th><span jhiTranslate="hipsterBandApp.song.creationDate">Creation Date</span></th>
+            <th><span jhiTranslate="hipsterBandApp.song.lyrics">Lyrics</span></th>
+            <th><span jhiTranslate="hipsterBandApp.song.author">Author</span></th>
+            <th><span jhiTranslate="hipsterBandApp.song.band">Band</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let song of songs ;trackBy: trackId">
+                <td><a [routerLink]="['/song', song.id, 'view' ]">{{song.id}}</a></td>
+                <td>{{song.title}}</td>
+                <td>{{song.duration}}</td>
+                <td>
+                    <a *ngIf="song.audioContent" (click)="openFile(song.audioContentContentType, song.audioContent)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="song.audioContent">{{song.audioContentContentType}}, {{byteSize(song.audioContent)}}</span>
+                </td>
+                <td>{{song.creationDate | date:'mediumDate'}}</td>
+                <td>{{song.lyrics}}</td>
+                <td>
+                    {{song.author?.login}}
+                </td>
+                <td>
+                    <div *ngIf="song.band">
+                        <a [routerLink]="['../band', song.band?.id, 'view' ]" >{{song.band?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/song', song.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/song', song.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'song', { outlets: { popup: song.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

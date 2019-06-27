@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-vote-heading" jhiTranslate="hipsterBandApp.vote.home.createOrEditLabel">Create or edit a Vote</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hipsterBandApp.vote.voteDate" for="field_voteDate">Vote Date</label>
+                    <div class="input-group">
+                        <input id="field_voteDate" type="text" class="form-control" name="voteDate" ngbDatepicker  #voteDateDp="ngbDatepicker" formControlName="voteDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="voteDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('voteDate').invalid && (editForm.get('voteDate').dirty || editForm.get('voteDate').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('voteDate').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hipsterBandApp.vote.member" for="field_member">Member</label>
+                    <select class="form-control" id="field_member" name="member" formControlName="member">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('member').value?.id ? editForm.get('member').value : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hipsterBandApp.vote.song" for="field_song">Song</label>
+                    <select class="form-control" id="field_song" name="song" formControlName="song">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="songOption.id === editForm.get('song').value?.id ? editForm.get('song').value : songOption" *ngFor="let songOption of songs; trackBy: trackSongById">{{songOption.title}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vote">
+            <h2><span jhiTranslate="hipsterBandApp.vote.detail.title">Vote</span> {{vote.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hipsterBandApp.vote.voteDate">Vote Date</span></dt>
+                <dd>
+                    <span>{{vote.voteDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="hipsterBandApp.vote.member">Member</span></dt>
+                <dd>
+                    {{vote.member?.login}}
+                </dd>
+                <dt><span jhiTranslate="hipsterBandApp.vote.song">Song</span></dt>
+                <dd>
+                    <div *ngIf="vote.song">
+                        <a [routerLink]="['/song', vote.song?.id, 'view']">{{vote.song?.title}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/vote', vote.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

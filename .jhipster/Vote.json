@@ -1,0 +1,39 @@
+{
+    "name": "Vote",
+    "fields": [
+        {
+            "fieldName": "voteDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "vote",
+            "relationshipName": "member",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "song",
+            "otherEntityRelationshipName": "vote",
+            "relationshipName": "song",
+            "otherEntityField": "title"
+        }
+    ],
+    "changelogDate": "20190627075232",
+    "entityTableName": "vote",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "HipsterBand"
+    ]
+}

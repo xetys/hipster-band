@@ -1,0 +1,25 @@
+{
+  "hipsterBandApp": {
+    "band": {
+      "home": {
+        "title": "Bands",
+        "createLabel": "Create a new Band",
+        "createOrEditLabel": "Create or edit a Band",
+        "notFound": "No Band found"
+      },
+      "created": "A new Band is created with identifier {{ param }}",
+      "updated": "A Band is updated with identifier {{ param }}",
+      "deleted": "A Band is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Band {{ id }}?"
+      },
+      "detail": {
+        "title": "Band"
+      },
+      "name": "Name",
+      "genre": "Genre",
+      "song": "Song",
+      "member": "Member"
+    }
+  }
+}

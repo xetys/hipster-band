@@ -1,0 +1,29 @@
+{
+  "hipsterBandApp": {
+    "song": {
+      "home": {
+        "title": "Songs",
+        "createLabel": "Créer un nouveau Song",
+        "createOrEditLabel": "Créer ou éditer un Song",
+        "notFound": "Aucun Song trouvé"
+      },
+      "created": "Un nouveau Song a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Song avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Song avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Song {{ id }} ?"
+      },
+      "detail": {
+        "title": "Song"
+      },
+      "title": "Title",
+      "duration": "Duration",
+      "audioContent": "Audio Content",
+      "creationDate": "Creation Date",
+      "lyrics": "Lyrics",
+      "vote": "Vote",
+      "author": "Author",
+      "band": "Band"
+    }
+  }
+}

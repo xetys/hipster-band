@@ -1,0 +1,46 @@
+
+application {
+	config {
+    	baseName HipsterBand
+        applicationType monolith
+        authenticationType jwt
+        prodDatabaseType postgresql
+        buildTool gradle      
+    }
+    
+    entities *
+}
+
+entity Band {
+	name String required
+    genre String
+}
+
+entity Song {
+	title String required
+    duration Duration required
+    audioContent Blob
+    creationDate LocalDate
+    lyrics TextBlob
+}
+
+entity Vote {
+	voteDate LocalDate required
+}
+
+relationship OneToMany {
+	Band{song(title)} to Song{band(name)}
+    Song{vote} to Vote{song(title)}
+}
+
+relationship ManyToOne {
+	Vote{member(login)} to User
+    Song{author(login)} to User
+}
+
+relationship ManyToMany {
+	Band{member(login)} to User
+}
+
+service * with serviceClass
+

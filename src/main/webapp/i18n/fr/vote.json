@@ -1,0 +1,24 @@
+{
+  "hipsterBandApp": {
+    "vote": {
+      "home": {
+        "title": "Votes",
+        "createLabel": "Créer un nouveau Vote",
+        "createOrEditLabel": "Créer ou éditer un Vote",
+        "notFound": "Aucun Vote trouvé"
+      },
+      "created": "Un nouveau Vote a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Vote avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Vote avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Vote {{ id }} ?"
+      },
+      "detail": {
+        "title": "Vote"
+      },
+      "voteDate": "Vote Date",
+      "member": "Member",
+      "song": "Song"
+    }
+  }
+}

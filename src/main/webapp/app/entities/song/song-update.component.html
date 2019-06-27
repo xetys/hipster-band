@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-song-heading" jhiTranslate="hipsterBandApp.song.home.createOrEditLabel">Create or edit a Song</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hipsterBandApp.song.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                           formControlName="title"/>
+                    <div *ngIf="editForm.get('title').invalid && (editForm.get('title').dirty || editForm.get('title').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('title').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hipsterBandApp.song.duration" for="field_duration">Duration</label>
+                    <input type="number" class="form-control" name="duration" id="field_duration"
+                           formControlName="duration"/>
+                    <div *ngIf="editForm.get('duration').invalid && (editForm.get('duration').dirty || editForm.get('duration').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('duration').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('duration')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hipsterBandApp.song.audioContent" for="field_audioContent">Audio Content</label>
+                    <div>
+                        <div *ngIf="editForm.get('audioContent').value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('audioContentContentType').value, editForm.get('audioContent').value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{editForm.get('audioContentContentType').value}}, {{byteSize(editForm.get('audioContent').value)}}</span>
+                            <button type="button" (click)="editForm.patchValue({audioContent: null});editForm.patchValue({audioContentContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_audioContent" (change)="setFileData($event, 'audioContent', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="audioContent" id="field_audioContent"
+                           formControlName="audioContent"/>
+                    <input type="hidden" class="form-control" name="audioContentContentType" id="field_audioContentContentType"
+                           formControlName="audioContentContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hipsterBandApp.song.creationDate" for="field_creationDate">Creation Date</label>
+                    <div class="input-group">
+                        <input id="field_creationDate" type="text" class="form-control" name="creationDate" ngbDatepicker  #creationDateDp="ngbDatepicker" formControlName="creationDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="creationDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hipsterBandApp.song.lyrics" for="field_lyrics">Lyrics</label>
+                    <textarea class="form-control" name="lyrics" id="field_lyrics"
+                              formControlName="lyrics"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hipsterBandApp.song.author" for="field_author">Author</label>
+                    <select class="form-control" id="field_author" name="author" formControlName="author">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('author').value?.id ? editForm.get('author').value : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="hipsterBandApp.song.band" for="field_band">Band</label>
+                    <select class="form-control" id="field_band" name="band" formControlName="band">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bandOption.id === editForm.get('band').value?.id ? editForm.get('band').value : bandOption" *ngFor="let bandOption of bands; trackBy: trackBandById">{{bandOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
