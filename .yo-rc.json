@@ -22,7 +22,7 @@
     "applicationType": "monolith",
     "authenticationType": "jwt",
     "buildTool": "gradle",
-    "jhipsterVersion": "6.1.0",
+    "jhipsterVersion": "6.1.2",
     "skipUserManagement": false,
     "clientPackageManager": "npm",
     "cacheProvider": "ehcache",
@@ -44,7 +44,7 @@
   },
   "entities": ["Band", "Song", "Vote"],
   "generator-jhipster-ktelizer": {
-    "jhipsterVersion": "6.1.0",
+    "jhipsterVersion": "6.1.2",
     "applicationType": "monolith",
     "baseName": "HipsterBand",
     "packageName": "com.mycompany.myapp",

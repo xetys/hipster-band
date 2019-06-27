@@ -254,7 +254,7 @@ public class VoteResourceIT {
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isNoContent());
 
-        // Validate the database is empty
+        // Validate the database contains one less item
         List<Vote> voteList = voteRepository.findAll();
         assertThat(voteList).hasSize(databaseSizeBeforeDelete - 1);
     }

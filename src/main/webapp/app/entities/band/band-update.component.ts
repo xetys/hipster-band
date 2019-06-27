@@ -71,18 +71,17 @@ export class BandUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IBand {
-    const entity = {
+    return {
       ...new Band(),
       id: this.editForm.get(['id']).value,
       name: this.editForm.get(['name']).value,
       genre: this.editForm.get(['genre']).value,
       members: this.editForm.get(['members']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IBand>>) {
-    result.subscribe((res: HttpResponse<IBand>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

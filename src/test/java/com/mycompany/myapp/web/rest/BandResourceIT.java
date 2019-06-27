@@ -306,7 +306,7 @@ public class BandResourceIT {
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isNoContent());
 
-        // Validate the database is empty
+        // Validate the database contains one less item
         List<Band> bandList = bandRepository.findAll();
         assertThat(bandList).hasSize(databaseSizeBeforeDelete - 1);
     }

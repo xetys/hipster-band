@@ -128,7 +128,7 @@ export class SongUpdateComponent implements OnInit {
   }
 
   private createFromForm(): ISong {
-    const entity = {
+    return {
       ...new Song(),
       id: this.editForm.get(['id']).value,
       title: this.editForm.get(['title']).value,
@@ -140,11 +140,10 @@ export class SongUpdateComponent implements OnInit {
       author: this.editForm.get(['author']).value,
       band: this.editForm.get(['band']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ISong>>) {
-    result.subscribe((res: HttpResponse<ISong>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

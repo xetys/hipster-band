@@ -85,18 +85,17 @@ export class VoteUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IVote {
-    const entity = {
+    return {
       ...new Vote(),
       id: this.editForm.get(['id']).value,
       voteDate: this.editForm.get(['voteDate']).value,
       member: this.editForm.get(['member']).value,
       song: this.editForm.get(['song']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IVote>>) {
-    result.subscribe((res: HttpResponse<IVote>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {
