@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Band.
+    -->
+    <changeSet id="20190627075230-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="band_id"
+                                 baseTableName="band_member"
+                                 constraintName="fk_band_member_band_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="band"/>
+
+        <addForeignKeyConstraint baseColumnNames="member_id"
+                                 baseTableName="band_member"
+                                 constraintName="fk_band_member_member_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
+    </changeSet>
+</databaseChangeLog>

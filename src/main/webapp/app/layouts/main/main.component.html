@@ -1,0 +1,20 @@
+<jhi-page-ribbon></jhi-page-ribbon>
+<div>
+    <router-outlet name="navbar"></router-outlet>
+</div>
+<div class="container-fluid">
+    <div class="container clearfix mb-4">
+        <div class="row">
+            <div class="col-12">
+                <ktelizer-navigation [entries]="navEntries"></ktelizer-navigation>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-4">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+        <router-outlet name="popup"></router-outlet>
+    </div>
+</div>
+<jhi-footer></jhi-footer>

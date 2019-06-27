@@ -1,0 +1,2 @@
+hello ktelizer!
+It's dummy.txt

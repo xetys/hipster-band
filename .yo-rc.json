@@ -1,0 +1,79 @@
+{
+  "generator-jhipster": {
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "com.mycompany.myapp",
+    "packageFolder": "com/mycompany/myapp",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "serviceDiscoveryType": false,
+    "skipClient": false,
+    "skipServer": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "baseName": "HipsterBand",
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "buildTool": "gradle",
+    "jhipsterVersion": "6.1.0",
+    "skipUserManagement": false,
+    "clientPackageManager": "npm",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angularX",
+    "serverPort": "8080",
+    "useSass": true,
+    "jwtSecretKey": "N2IyYWU2YWY4NmJkNzEyZDc4Y2E4MDdlMjk2ZjZmM2Y2ZjI0YThiYWNlZWQwOWUxMjE1OGE0M2QzZmIzOWVhOWIzMzAzZjBjMjRiYTQ0OTFiNTAxYzc1YTYzM2I2Nzk0NTYxY2JiODM1MGU1OTk0MmRjY2ZmNzAwMDljNmI5YmI=",
+    "clientTheme": "none",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-ktelizer",
+        "version": "7.1.1"
+      }
+    ],
+    "blueprint": "generator-jhipster-ktelizer",
+    "blueprintVersion": "7.1.1"
+  },
+  "entities": [
+    "Band",
+    "Song",
+    "Vote"
+  ],
+  "generator-jhipster-ktelizer": {
+    "jhipsterVersion": "6.1.0",
+    "applicationType": "monolith",
+    "baseName": "HipsterBand",
+    "packageName": "com.mycompany.myapp",
+    "packageFolder": "com/mycompany/myapp",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "N2IyYWU2YWY4NmJkNzEyZDc4Y2E4MDdlMjk2ZjZmM2Y2ZjI0YThiYWNlZWQwOWUxMjE1OGE0M2QzZmIzOWVhOWIzMzAzZjBjMjRiYTQ0OTFiNTAxYzc1YTYzM2I2Nzk0NTYxY2JiODM1MGU1OTk0MmRjY2ZmNzAwMDljNmI5YmI=",
+    "enableTranslation": true,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none"
+  }
+}
