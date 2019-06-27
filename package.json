@@ -31,7 +31,9 @@
     "rxjs": "6.5.2",
     "swagger-ui": "2.2.10",
     "tslib": "1.9.3",
-    "zone.js": "0.9.1"
+    "zone.js": "0.9.1",
+    "ktelizer": "^6.0.3",
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "@angular/cli": "8.0.0",
@@ -81,6 +83,7 @@
     "tslint-config-prettier": "1.18.0",
     "tslint-loader": "3.5.4",
     "typescript": "3.4.5",
+    "generator-jhipster-ktelizer": "7.1.1",
     "webpack": "4.32.2",
     "webpack-cli": "3.3.2",
     "webpack-dev-server": "3.4.1",

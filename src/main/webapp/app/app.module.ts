@@ -18,6 +18,7 @@ import { HipsterBandHomeModule } from './home/home.module';
 import { HipsterBandAccountModule } from './account/account.module';
 import { HipsterBandEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
+import { KloudModule } from 'app/kloud/kloud.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
@@ -36,6 +37,7 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
     HipsterBandCoreModule,
     HipsterBandHomeModule,
     HipsterBandAccountModule,
+    KloudModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     HipsterBandEntityModule,
     HipsterBandAppRoutingModule
