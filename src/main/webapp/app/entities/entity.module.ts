@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild([
       {
         path: 'band',
-        loadChildren: './band/band.module#HipsterBandBandModule'
+        loadChildren: '../sbs/band-extended/band-extended.module#HipsterBandBandExtendedModule'
       },
       {
         path: 'song',

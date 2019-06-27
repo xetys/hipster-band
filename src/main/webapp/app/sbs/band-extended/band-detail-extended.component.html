@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="band">
+            <h2><span jhiTranslate="hipsterBandApp.band.detail.title">Band</span> {{band.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hipsterBandApp.band.name">Name</span></dt>
+                <dd>
+                    <span>{{band.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="hipsterBandApp.band.genre">Genre</span></dt>
+                <dd>
+                    <span>{{band.genre}}</span>
+                </dd>
+                <dt><span jhiTranslate="hipsterBandApp.band.member">Member</span></dt>
+                <dd>
+                    <span *ngFor="let member of band.members; let last = last">
+                        {{member.login}}{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <table class="table">
+                <tr>
+                    <th>Song</th>
+                    <th>Votes</th>
+                    <th>Actions</th>
+                </tr>
+                <tr *ngFor="let song of songs">
+                    <td>{{song.song.title}}</td>
+                    <td>{{song.numberVotes}}</td>
+                    <td><button class="btn btn-primary" (click)="voteForSong(song.song)">+1</button></td>
+                </tr>
+            </table>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/band', band.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
