@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
+
+import { JhiEventManager } from 'ng-jhipster';
 import { AccountService } from 'app/core/auth/account.service';
 import { AuthServerProvider } from 'app/core/auth/auth-jwt.service';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  constructor(private accountService: AccountService, private authServerProvider: AuthServerProvider) {}
+  constructor(
+    private accountService: AccountService,
+    private authServerProvider: AuthServerProvider,
+    private eventManager: JhiEventManager
+  ) {}
 
   login(credentials, callback?) {
     const cb = callback || function() {};
@@ -26,11 +32,23 @@ export class LoginService {
     });
   }
 
-  loginWithToken(jwt, rememberMe) {
-    return this.authServerProvider.loginWithToken(jwt, rememberMe);
+  isAuthenticated() {
+    return this.accountService.isAuthenticated();
+  }
+
+  logoutDirectly() {
+    this.accountService.authenticate(null);
   }
 
   logout() {
-    this.authServerProvider.logout().subscribe(null, null, () => this.accountService.authenticate(null));
+    if (this.accountService.isAuthenticated()) {
+      this.authServerProvider.logout().subscribe(() => this.accountService.authenticate(null));
+    } else {
+      this.accountService.authenticate(null);
+    }
+    this.eventManager.broadcast({
+      name: 'deauthenticationSuccess',
+      content: 'Sending Deauthentication Success'
+    });
   }
 }
